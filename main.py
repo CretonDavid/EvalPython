@@ -28,7 +28,7 @@ def verifUrl_A4(url):
     return verif
   x = url.split(".")
 
-  if len(x[1]) != 3:
+  if len(x[1]) > 3:
     print("url mal formee") 
     verif = False
   else:
@@ -36,17 +36,29 @@ def verifUrl_A4(url):
   return verif
 
 ###### exercice 03
-
+def getTLD_B3(url):
+  result =  verifUrl_A4(url)
+  if result == True:
+    x = url.split(".")
+    return x[1]
+  else:
+    print("TLD mal formee") 
+    return False
 
 ###### exercice 04
-
-
+def VerifTLD_X3(tldOk,tld):
+  for i in tldOk:
+    if tld == i:
+      return True
+  print("TLD absente")
+  return False 
+  
 ###### exercice 05
-    
+def ipVerifFormat_I3(adresseIp):    
+  list = adresseIp.split(".")
 
 ###### exercice 06
-
-
+  
 # Zone 2 ## zone pour les classes
 ###### exercice 07
 
@@ -78,15 +90,17 @@ def main() :
 
 	###### exercice 03
   print("exercice 03 #######################")
-
+  result = getTLD_B3 ("toto.ftrr")
+  print(result)
 
 	###### exercice 04
   print("exercice 04 #######################")
-
+  result = VerifTLD_X3 (["fr","com","net"],"net")
+  print(result)
 
 	###### exercice 05
   print("exercice 05 #######################")
-
+  result = ipVerifFormat_I3("192.168.12.3")
 
 	###### exercice 06
   print("exercice 06 #######################")
