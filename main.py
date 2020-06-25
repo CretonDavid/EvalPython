@@ -14,6 +14,7 @@ def makeDico_K8(nomFichier, sep):
     dictionnaire[lines[0]] = lines[1].replace("\n","")
   f.close()
   return dictionnaire
+
 ###### exercice 02
 def verifUrl_A4(url):
   index = 0
@@ -52,19 +53,42 @@ def VerifTLD_X3(tldOk,tld):
       return True
   print("TLD absente")
   return False 
-  
+
 ###### exercice 05
 def ipVerifFormat_I3(adresseIp):    
   list = adresseIp.split(".")
+  if len(list) != 4:
+    print("nombre de champs incorrect")
+    return False
+
+  for l in list:
+    if int(l) < 0 or int(l) > 255:
+      print("champ d’adresse incorrect")
+      return False
+
+  return True
 
 ###### exercice 06
-  
+def makeTLD_C5(dico):
+  tlds =[]
+  for keys in dico.keys():
+    tld = getTLD_B3(keys)
+    if tld not in tlds:
+      tlds.append(tld)
+  return tlds
+
 # Zone 2 ## zone pour les classes
 ###### exercice 07
+class serveurDns_D3:
 
+  def __init__(self, resolDns):
+    self.resolDns = resolDns
 
 ###### exercice 08
-
+  def resolDNS_W2(self,url):
+    result =  verifUrl_A4(url)
+    if result == False:
+      print("erreur de format de l’url")
 
 ###### exercice 09
     
@@ -101,9 +125,13 @@ def main() :
 	###### exercice 05
   print("exercice 05 #######################")
   result = ipVerifFormat_I3("192.168.12.3")
+  print(result)
 
 	###### exercice 06
   print("exercice 06 #######################")
+  resolDns = makeDico_K8("dns.txt",",")
+  tldOk = makeTLD_C5 (resolDns)
+  print(tldOk)
 
 	# Zone 4 ## zone pour les tests de la classe
 
